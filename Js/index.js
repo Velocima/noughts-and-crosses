@@ -25,6 +25,9 @@ const makeMove = () => {
             }
             if (moveCounter>4) {
                 checkWin();
+                if(moveCounter === 9 && checkWin()) {
+                    gameOver(false);
+                }
             }
         })
     })
@@ -32,7 +35,7 @@ const makeMove = () => {
 
 const checkWin = () => {
     // check rows
-    board[0] && board[0] === board[1] && board[1] === board[2] ? gameOver(board[0]) :
+    return board[0] && board[0] === board[1] && board[1] === board[2] ? gameOver(board[0]) :
     board[3] && board[3] === board[4] && board[4] === board[5] ? gameOver(board[3]) :
     board[6] && board[6] === board[7] && board[7] === board[8] ? gameOver(board[6]) :
     // check columns
@@ -42,13 +45,18 @@ const checkWin = () => {
     // check diagonals
     board[0] && board[0] === board[4] && board[4] === board[8] ? gameOver(board[0]) : 
     board[2] && board[2] === board[4] && board[4] === board[6] ? gameOver(board[2]) :
-    false;
+    true;
 }
 
 const gameOver = (winner) => {
     playState = false;
     const victor = document.querySelector('.winner');
-    victor.innerHTML = winner;
+    const draw = document.querySelector('.win-message');
+    if(winner) {
+        victor.innerHTML = winner;
+    } else {
+        draw.innerHTML = "It's a draw!";
+    }
 }
 
 makeMove();
