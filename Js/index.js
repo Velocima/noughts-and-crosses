@@ -1,6 +1,11 @@
 const tiles = document.querySelectorAll('.tile');
+let victor = document.querySelector('.winner');
+const draw = document.querySelector('.win-message');
+const playButton = document.querySelector('.win-screen');
+
 let moveCounter = 0;
 let playState = true;
+
 const board = new Array(9).fill(false);
 
 const makeMove = () => {
@@ -50,8 +55,7 @@ const checkWin = () => {
 
 const gameOver = (winner) => {
     playState = false;
-    const victor = document.querySelector('.winner');
-    const draw = document.querySelector('.win-message');
+    playButton.classList.add('tile-active');
     if(winner) {
         victor.innerHTML = winner;
     } else {
@@ -59,4 +63,24 @@ const gameOver = (winner) => {
     }
 }
 
+const resetBoard = () => {
+    draw.innerHTML = "<span class='winner'></span> wins!";
+    victor = document.querySelector('.winner');
+    playState = true;
+    moveCounter = 0;
+    playButton.classList.remove('tile-active');
+    board.fill(false);
+}
+
+const playAgain = () => {
+    playButton.addEventListener('click', () => {
+        resetBoard();
+        tiles.forEach(tile => {
+            tile.children[0].classList.remove('tile-active');
+            tile.children[1].classList.remove('tile-active');
+        })
+    });
+}
+
+playAgain();
 makeMove();
