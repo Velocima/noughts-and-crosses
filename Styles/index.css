@@ -33,3 +33,7 @@ h1 {
 .nought {
     opacity: 0;
 }
+
+.tile-active {
+    opacity: 1;
+}
