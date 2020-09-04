@@ -137,3 +137,11 @@ h3 {
     transform: translate(-82px, 0) rotate(45deg);
     opacity: 1;
 }
+
+p {
+    margin: 10px;
+    color: #ffffd2;
+    font-family: 'Quicksand', sans-serif;
+    font-size: 30px;
+    text-align: center;
+}

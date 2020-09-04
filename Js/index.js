@@ -2,9 +2,13 @@ const tiles = document.querySelectorAll('.tile');
 const victor = document.querySelector('.win-message');
 const playButton = document.querySelector('.win-screen');
 const lines = document.querySelectorAll('.line');
+const scores = document.querySelector('.score');
 
 let moveCounter = 0;
 let playState = true;
+let noughtWins = 0;
+let crossWins = 0;
+let drawCounter = 0;
 
 const board = new Array(9).fill(false);
 
@@ -59,9 +63,10 @@ const gameOver = (winner, line) => {
     playState = false;
     if (line < 6) {
         lines[line].classList.add("line-won");
-    } else {
+    } else if(line<8) {
         lines[line].classList.add(`line-${line + 1}-won`);
     }
+    updateScore(winner);
     if(winner) {
         victor.innerHTML = `${winner} win!`;
     } else {
@@ -88,6 +93,19 @@ const playAgain = () => {
             tile.classList.remove('tile-active');
         })
     });
+}
+
+const updateScore = (winner) => {
+    if(winner == "Noughts") {
+        noughtWins++
+        scores.children[0].innerHTML = `Noughts: ${noughtWins}`
+    } else if (winner == "Crosses") {
+        crossWins++
+        scores.children[1].innerHTML = `Crosses: ${crossWins}`
+    } else {
+        drawCounter++
+        scores.children[2].innerHTML = `Draws: ${drawCounter}`
+    }
 }
 
 playAgain();
