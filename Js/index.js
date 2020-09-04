@@ -13,18 +13,19 @@ const makeMove = () => {
         tile.addEventListener("click", () => {
             if (
                 tile.children[0].classList.value.includes('tile-active') || 
-                tile.children[1].classList.value.includes('tile-active') ||
                 !playState
             ) return;
             
 
             if(moveCounter % 2) {
-               tile.children[0].classList.add('tile-active');
-               board[index] = "Noughts";
-               moveCounter++;
+                tile.children[0].innerHTML = "O";
+                tile.children[0].classList.add('tile-active');
+                board[index] = "Noughts";
+                moveCounter++;
             }
             else {
-                tile.children[1].classList.add('tile-active');
+                tile.children[0].innerHTML = "X";
+                tile.children[0].classList.add('tile-active');
                 board[index] = "Crosses";
                 moveCounter++;
             }
@@ -77,7 +78,6 @@ const playAgain = () => {
         resetBoard();
         tiles.forEach(tile => {
             tile.children[0].classList.remove('tile-active');
-            tile.children[1].classList.remove('tile-active');
         })
     });
 }

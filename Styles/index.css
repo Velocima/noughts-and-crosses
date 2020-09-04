@@ -1,3 +1,4 @@
+@import url('https://fonts.googleapis.com/css2?family=Grandstander:wght@200&display=swap');
 * {
     margin: 0;
     padding: 0;
@@ -22,18 +23,25 @@ h1 {
 
 .tile {
     border: 1px solid black;
+    display: flex;
+    justify-content: center;
     height: 150px;
     width: 150px;
 }
 
-.cross {
+.token{
+    justify-self: center;
+    align-self: center;
     opacity: 0;
+    font-size: 130px;
+    cursor: pointer;
+    font-family: 'Grandstander', cursive;
+    font-weight: 200;
 }
 
-.nought {
-    opacity: 0;
-}
+
 
 .tile-active {
     opacity: 1;
+    cursor: default;
 }
