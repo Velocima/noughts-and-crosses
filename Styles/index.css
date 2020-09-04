@@ -1,4 +1,4 @@
-@import url('https://fonts.googleapis.com/css2?family=Grandstander:wght@200&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Quicksand&display=swap');
 * {
     margin: 0;
     padding: 0;
@@ -7,41 +7,79 @@ body {
     display: flex;
     flex-direction: column;
     align-items: center;
-    background-color: #515070;
+    background-color: #a8d8ea;
 }
 
 h1 {
     margin: 2rem;
+    color: #ffffd2;
+    font-family: 'Quicksand', sans-serif;
 }
 
 .board {
     display: grid;
     grid-template-rows: 1fr 1fr 1fr;
     grid-template-columns: 1fr 1fr 1fr;
-    background-color: #f6f6f6;
+    background-color: #fcbad3;
 }
 
 .tile {
-    border: 1px solid black;
+    border: 1px solid #aa96da;
     display: flex;
     justify-content: center;
     height: 150px;
     width: 150px;
+    transition: all 1s;
+    overflow: hidden;
+    cursor: pointer;
 }
+
+.tile-active {
+    cursor: default;
+}
+
+
 
 .token{
     justify-self: center;
     align-self: center;
     opacity: 0;
     font-size: 130px;
-    cursor: pointer;
-    font-family: 'Grandstander', cursive;
-    font-weight: 200;
+    font-family: 'Quicksand', sans-serif;
+    color: #aa96da;
+    transition: all .5s;
+    transform: scale(0);
 }
 
-
-
-.tile-active {
+.token-active {
     opacity: 1;
-    cursor: default;
+    transform: scale(1);
+}
+
+h3 {
+    color: #ffffd2;
+    text-align: center;   
+    font-family: 'Quicksand', sans-serif;
+    font-size: 30px;
+    padding: 30px 0;
+}
+
+.win-screen {
+    z-index: 50;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    position: relative;
+    bottom: 456px;
+    height: 456px;
+    width: 456px;
+    background-color: #aa96da;
+    opacity: 0;
+    pointer-events: none;
+    transition: all 1s;
+}
+
+.win-screen-active {
+    opacity: 0.7;
+    pointer-events: all;
 }

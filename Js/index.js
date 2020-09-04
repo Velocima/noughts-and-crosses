@@ -1,6 +1,5 @@
 const tiles = document.querySelectorAll('.tile');
-let victor = document.querySelector('.winner');
-const draw = document.querySelector('.win-message');
+const victor = document.querySelector('.win-message');
 const playButton = document.querySelector('.win-screen');
 
 let moveCounter = 0;
@@ -12,20 +11,21 @@ const makeMove = () => {
     tiles.forEach((tile, index) => {
         tile.addEventListener("click", () => {
             if (
-                tile.children[0].classList.value.includes('tile-active') || 
+                tile.children[0].classList.value.includes('token-active') || 
                 !playState
             ) return;
             
-
             if(moveCounter % 2) {
                 tile.children[0].innerHTML = "O";
-                tile.children[0].classList.add('tile-active');
+                tile.children[0].classList.add('token-active');
+                tile.classList.add('tile-active');
                 board[index] = "Noughts";
                 moveCounter++;
             }
             else {
                 tile.children[0].innerHTML = "X";
-                tile.children[0].classList.add('tile-active');
+                tile.children[0].classList.add('token-active');
+                tile.classList.add('tile-active');
                 board[index] = "Crosses";
                 moveCounter++;
             }
@@ -56,20 +56,18 @@ const checkWin = () => {
 
 const gameOver = (winner) => {
     playState = false;
-    playButton.classList.add('tile-active');
+    playButton.classList.add('win-screen-active');
     if(winner) {
-        victor.innerHTML = winner;
+        victor.innerHTML = `${winner} win!`;
     } else {
-        draw.innerHTML = "It's a draw!";
+        victor.innerHTML = "It's a draw!";
     }
 }
 
 const resetBoard = () => {
-    draw.innerHTML = "<span class='winner'></span> wins!";
-    victor = document.querySelector('.winner');
     playState = true;
     moveCounter = 0;
-    playButton.classList.remove('tile-active');
+    playButton.classList.remove('win-screen-active');
     board.fill(false);
 }
 
@@ -77,7 +75,8 @@ const playAgain = () => {
     playButton.addEventListener('click', () => {
         resetBoard();
         tiles.forEach(tile => {
-            tile.children[0].classList.remove('tile-active');
+            tile.children[0].classList.remove('token-active');
+            tile.classList.remove('tile-active');
         })
     });
 }
