@@ -3,6 +3,7 @@ const victor = document.querySelector('.win-message');
 const playButton = document.querySelector('.win-screen');
 const lines = document.querySelectorAll('.line');
 const scores = document.querySelector('.score');
+const resetButton = document.querySelector('.reset');
 
 let moveCounter = 0;
 let playState = true;
@@ -72,7 +73,7 @@ const gameOver = (winner, line) => {
     } else {
         victor.innerHTML = "It's a draw!";
     }
-    setTimeout(() => {playButton.classList.add('win-screen-active')}, 1200);
+    setTimeout(() => {playButton.classList.add('win-screen-active')}, 800);
 }
 
 const resetBoard = () => {
@@ -106,6 +107,15 @@ const updateScore = (winner) => {
         drawCounter++
         scores.children[2].innerHTML = `Draws: ${drawCounter}`
     }
+}
+
+resetButton.onclick = () => {
+    noughtWins = 0;
+    crossWins = 0;
+    drawCounter = 0;
+    scores.children[0].innerHTML = `Noughts: ${noughtWins}`
+    scores.children[1].innerHTML = `Crosses: ${crossWins}`
+    scores.children[2].innerHTML = `Draws: ${drawCounter}`
 }
 
 playAgain();

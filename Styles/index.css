@@ -138,10 +138,53 @@ h3 {
     opacity: 1;
 }
 
-p {
+.scoreboard {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-between;
+    width: 450px;
+}
+
+p, button {
     margin: 10px;
     color: #ffffd2;
     font-family: 'Quicksand', sans-serif;
     font-size: 30px;
     text-align: center;
+}
+
+
+.reset {
+    margin-left: 50px;
+    padding: 5px;
+    border: 3px solid #ffffd2;
+    background-color: #a8d8ea;
+    border-radius: 20px;
+    transition: background-color 0.2s ease-out;
+    outline: 0;
+}
+
+.reset:hover {
+    background-color: #aa96da;
+
+}
+
+.reset:active {
+    transform: scale(0.9);
+    border: 3px solid #ffffd2;
+    outline: 0;
+    border: none;
+}
+
+@keyframes buttonClick {
+    0% {
+        transfrom: scale(1);
+    }
+    50% {
+        transfrom: scale(0.8);
+    }
+    100% {
+        transfrom: scale(1);
+    }
 }
