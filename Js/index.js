@@ -16,6 +16,7 @@ const board = new Array(9).fill(false);
 const makeMove = () => {
     tiles.forEach((tile, index) => {
         tile.addEventListener("click", () => {
+            // return if tile is in play or game is not in play
             if (
                 tile.children[0].classList.value.includes('token-active') || 
                 !playState
@@ -35,6 +36,7 @@ const makeMove = () => {
                 board[index] = "Crosses";
                 moveCounter++;
             }
+            // check if game has been won or drawn
             if (moveCounter>4) {
                 checkWin();
                 if(moveCounter === 9 && checkWin()) {
@@ -60,6 +62,7 @@ const checkWin = () => {
     true;
 }
 
+// ends the game, bringing up the end screen. decalares a winner. updates the scoreboard. called when there is a win or draw
 const gameOver = (winner, line) => {
     playState = false;
     if (line < 6) {
@@ -76,6 +79,7 @@ const gameOver = (winner, line) => {
     setTimeout(() => {playButton.classList.add('win-screen-active')}, 800);
 }
 
+// reset the board for a new game. called in playAgain 
 const resetBoard = () => {
     playState = true;
     moveCounter = 0;
@@ -86,6 +90,7 @@ const resetBoard = () => {
     })
 }
 
+// starts a new game when end screen is clicked
 const playAgain = () => {
     playButton.addEventListener('click', () => {
         resetBoard();
@@ -96,6 +101,7 @@ const playAgain = () => {
     });
 }
 
+// updates the score board. called in gameOver
 const updateScore = (winner) => {
     if(winner == "Noughts") {
         noughtWins++
@@ -109,6 +115,7 @@ const updateScore = (winner) => {
     }
 }
 
+// sets all scores back to 0 when button is clicked
 resetButton.onclick = () => {
     noughtWins = 0;
     crossWins = 0;
@@ -118,5 +125,6 @@ resetButton.onclick = () => {
     scores.children[2].innerHTML = `Draws: ${drawCounter}`
 }
 
+// starts game
 playAgain();
 makeMove();
