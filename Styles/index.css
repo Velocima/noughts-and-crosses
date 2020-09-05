@@ -31,8 +31,13 @@ h1 {
     height: 150px;
     width: 150px;
     transition: all 1s;
+    transition: background-color 0.5s;
     overflow: hidden;
     cursor: pointer;
+}
+
+.tile:hover {
+    background-color: #ffffd2;
 }
 
 .tile-active {
@@ -76,11 +81,16 @@ h3 {
     opacity: 0;
     pointer-events: none;
     transition: all 1s;
+    transition: background-color 0.5s;
 }
 
 .win-screen-active {
     opacity: 0.7;
     pointer-events: all;
+}
+
+.win-screen:hover {
+    background-color: #fcbad3;
 }
 
 .win-lines {
